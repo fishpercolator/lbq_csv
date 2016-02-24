@@ -1,0 +1,12 @@
+db:
+  image: mysql
+  environment:
+    MYSQL_ALLOW_EMPTY_PASSWORD: true
+  ports:
+    - "3306"
+script:
+  build: .
+  volumes:
+    - .:/work
+  links:
+    - db
