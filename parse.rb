@@ -126,7 +126,7 @@ end
 
 CSV.open('leedsbeerquest.csv', 'w', force_quotes: true, encoding: 'UTF-8') do |csv|
   csv << ['name', 'category', 'url', 'date', 'excerpt', 'thumbnail', 'lat', 'lng', 'address', 'phone', 'twitter', 'stars_beer', 'stars_atmosphere', 'stars_amenities', 'stars_value', 'tags']
-  Post.all(post_type: 'post', post_status: 'publish').each do |post|
+  Post.all(post_type: 'post', post_status: 'publish', order: 'post_title').each do |post|
     csv << [
       post.post_title, post.category, post.guid, post.post_date, post.post_excerpt,
       post.thumbnail, post.lat, post.lng, post.address, post.phone, post.twitter,
