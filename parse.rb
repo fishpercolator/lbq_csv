@@ -129,7 +129,7 @@ CSV.open('leedsbeerquest.csv', 'w', force_quotes: true, encoding: 'UTF-8') do |c
   Post.all(post_type: 'post', post_status: 'publish', order: 'post_title').each do |post|
     csv << [
       post.post_title, post.category, post.guid, post.post_date, post.post_excerpt,
-      post.thumbnail, post.lat, post.lng, post.address, post.phone, post.twitter,
+      post.thumbnail, post.lat, post.lng, post.address.split("\n").map(&:strip).join(", "), post.phone, post.twitter,
       post.stars['beer'], post.stars['atmosphere'], post.stars['amenities'], post.stars['value'],
       post.tags.sort.join(',')
     ]
